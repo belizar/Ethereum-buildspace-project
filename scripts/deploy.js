@@ -6,7 +6,9 @@ const main = async () => {
     console.log('Account balance: ', accountBalance.toString());
 
     const waveContractFactory = await hre.ethers.getContractFactory('WavePortal');
-    const contract = await waveContractFactory.deploy();
+    const contract = await waveContractFactory.deploy({
+        value: hre.ethers.utils.parseEther("0.001"),
+    });
     await contract.deployed();
     console.log("Contract deployed to:", contract.address);
 }
